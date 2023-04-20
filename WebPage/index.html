@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التنقيب عن المعطيات</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            text-align: right;
+            background-color: #fff
+        }
+
+        .bg-light {
+            background-color: #f8f9fa !important
+        }
+
+        @media (min-width:992px) {
+            .navbar-expand-lg {
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-flow: row nowrap;
+                flex-flow: row nowrap;
+                -webkit-box-pack: start;
+                -ms-flex-pack: start;
+                justify-content: flex-start
+            }
+        }
+
+        .navbar {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: .5rem 1rem;
+            width: 100%
+        }
+
+        .navbar-light .navbar-brand {
+            color: rgba(0, 0, 0, .9)
+        }
+
+        .navbar-brand {
+            display: inline-block;
+            padding-top: .3125rem;
+            padding-bottom: .3125rem;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            line-height: inherit;
+            white-space: nowrap
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent
+        }
+
+        @media (min-width:992px) {
+            .navbar-expand-lg .navbar-nav {
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                flex-direction: row
+            }
+        }
+
+        .ml-auto {
+            margin-left: auto !important
+        }
+
+        .navbar-nav {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            padding-right: 0;
+            margin-bottom: 0;
+            list-style: none
+        }
+
+        ul {
+            margin-top: 0;
+            margin-bottom: 1rem
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: rgba(0, 0, 0, .5)
+        }
+
+        @media (min-width:992px) {
+            .navbar-expand-lg .navbar-nav .nav-link {
+                padding-right: .5rem;
+                padding-left: .5rem
+            }
+        }
+
+        .navbar-nav .nav-link {
+            padding-right: 0;
+            padding-left: 0
+        }
+
+        .nav-link {
+            display: block;
+            padding: .5rem 1rem
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent
+        }
+
+        .navbar-light .navbar-nav .active>.nav-link,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: var(--bs-blue)
+        }
+
+        tbody tr:nth-of-type(odd) {
+            background-color: var(--bs-gray-100)
+        }
+
+        tbody tr:nth-of-type(even) {
+            background-color: #fff
+        }
+
+        .table {
+            --bs-table-color: var(--bs-body-color);
+            --bs-table-bg: transparent;
+            --bs-table-accent-bg: transparent;
+            --bs-table-striped-color: var(--bs-body-color);
+            --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+            --bs-table-active-color: var(--bs-body-color);
+            --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+            --bs-table-hover-color: var(--bs-body-color);
+            --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+            margin-bottom: 1rem;
+            width: 100%;
+            color: var(--bs-table-color);
+            vertical-align: top;
+            border-color: var(--bs-table-border-color);
+            border-collapse: collapse;
+            text-align: center
+        }
+
+        .table>thead {
+            vertical-align: bottom
+        }
+
+        tbody,
+        td,
+        th,
+        thead,
+        tr {
+            border-color: inherit;
+            border-style: solid;
+            border-width: 0
+        }
+
+        th {
+            text-align: inherit
+        }
+
+        .table>:not(caption)>*>* {
+            padding: .5rem .5rem;
+            background-color: var(--bs-table-bg);
+            border-bottom-width: 1px;
+            box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg)
+        }
+
+        :root {
+            --bs-blue: #0d6efd;
+            --bs-gray-100: #f8f9fa;
+            --bs-body-color: #212529;
+        }
+
+        section {
+            margin-top: 60px
+        }
+
+        td,
+        th {
+            border: none !important
+        }
+
+        tr {
+            border-bottom: 1px solid #000
+        }
+
+        footer,
+        section {
+            width: 100%;
+            scroll-margin: 60px
+        }
+
+        footer {
+            margin-top: 20px;
+        }
+
+        footer .table,
+        section .table {
+            width: 90% !important;
+            margin-right: 5%
+        }
+
+        footer p,
+        section p {
+            margin-right: 5%
+        }
+
+        .h1,
+        h1 {
+            font-size: 2.5rem
+        }
+
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: .5rem;
+            font-family: ui-serif;
+            font-weight: 500;
+            line-height: 1.2;
+            color: inherit
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem
+        }
+
+        .navbar-fixed-top {
+            position: fixed;
+            right: 0;
+            z-index: 1030;
+            top: 0;
+            border-width: 0 0 1px
+        }
+
+        #compare {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body dir="rtl">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+            <a class="navbar-brand" href="/">التنقيب عن المعطيات</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href=" #" id="criteriaLink">معايير التقييم</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="compareLink">مقارنة المصنفات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="aboutLink">الطلاب</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section id="criteria">
+        <p class="h1">معايير التقييم</p>
+        <table id="criteriaTable" class="table">
+            <thead>
+                <tr>
+                    <th>المعيار</th>
+                    <th>الانحدار اللوجستي</th>
+                    <th>شجرة القرار</th>
+                    <th>بايز</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>الصحة</td>
+                    <td>19.58</td>
+                    <td>91.14</td>
+                    <td>44.94</td>
+                </tr>
+                <tr>
+                    <td>الدقة</td>
+                    <td>19.58</td>
+                    <td>91.14</td>
+                    <td>55.97</td>
+                </tr>
+                <tr>
+                    <td>الاستذكار</td>
+                    <td>19.58</td>
+                    <td>91.14</td>
+                    <td>44.94</td>
+                </tr>
+                <tr>
+                    <td>F1</td>
+                    <td>19.58</td>
+                    <td>91.14</td>
+                    <td>42.30</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section id="compare">
+        <p class="h1">مقارنة المصنفات</p>
+        <p>
+            نلاحظ أن الانحدار اللوجستي أعطى نتائج سيئة جداً وذلك لعدة أسباب حيث يناسب هذا النوع من المصنفات مسائل
+            التصنيف ذات ميزات الدخل الرقمية المستمرة ومسائل التصنيف الثنائي، على عكس مسألتنا التي تحتوي صفوف متعددة
+            وأغليها ميزاتها فئوية أي بعد أن رمزنا أصبحت رقيمة متقطعة وليست مستمرة، إضافة إلى حاجته لوجود ترابط خطي بين
+            الميزات والصفوف وكما رأينا سابقاً فهذا غير محقق في مسألتنا.
+        </p>
+        <p>
+            نلاحظ أن بايز أعطت نتائج سيئة أيضاً وذلك لأنه يحتاج بيانات ذات توزع طبيعي وهذا لم يتحقق في مسألتنا بالنسبة
+            للأعمدة الرقمية لذلك كانت نتيجة التدريب عليها سيئة وبعد دمجها مع التدريب الفئوي كانت النتيجة النهائية سيئة
+            أيضاً.
+        </p>
+        <p>
+            نلاحظ أن شجرة القرار أعطى نتائج ممتازة ويعود ذلك لكونه طريقة تجريبية عملية حيث أنه كل قاعدة توصل إلى قرار
+            باستخدام بعض الميزات فقط وليس كلها، أي الميزات ذات العلاقة مع بعضها.
+        </p>
+        <p>
+            بالنتيجة إن شجرة القرار هو النموذج الأفضل لهذه المسألة.
+        </p>
+    </section>
+    <footer id="about">
+        <p class="h1">إعداد الطلاب</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>المعرف</th>
+                    <th>الصف</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td>محمد حماد</td>
+                    <td>Mohammad_214747</td>
+                    <td>C2</td>
+                </tr>
+                <tr class="even">
+                    <td>رولا الابراهيم</td>
+                    <td>Rola_248235</td>
+                    <td>C2</td>
+                </tr>
+                <tr class="odd">
+                    <td>هيا حماده</td>
+                    <td>Haya_244099</td>
+                    <td>C2</td>
+                </tr>
+            </tbody>
+        </table>
+    </footer>
+
+    <script>
+        const navigationLinks = [
+            {
+                link: 'criteriaLink',
+                target: 'criteria'
+            },
+            {
+                link: 'compareLink',
+                target: 'compare'
+            },
+            {
+                link: 'aboutLink',
+                target: 'about'
+            }
+        ];
+
+        for (let i = 0; i < navigationLinks.length; i++) {
+            const currentNavigation = navigationLinks[i];
+            document.getElementById(currentNavigation.link).addEventListener("click", function (e) {
+                e.preventDefault();
+                document.getElementById(currentNavigation.target).scrollIntoView({ behavior: 'smooth' });
+                document.getElementById(currentNavigation.link).classList.add("active");
+
+                for (let j = 0; j < navigationLinks.length; j++) {
+                    if (j === i)
+                        continue;
+
+                    document.getElementById(navigationLinks[j].link).classList.remove("active");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
