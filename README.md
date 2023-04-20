@@ -8,3 +8,5 @@
 - JavaScript
 - HTML5, CSS3
 - Python, Django, Sklearn
+
+[Info page](https://mwsmyhomeworks.github.io/MWS_WDM_F22_HW_Mohammad_214747-Haya_244099-Rola_248235/WebPage/index.html)
